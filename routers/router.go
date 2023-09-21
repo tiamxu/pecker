@@ -13,13 +13,14 @@ func InitRouter(r *gin.Engine) {
 		c.String(200, "pong")
 	})
 	r.GET("/login", controllers.LoginGet)
-	userGroup := r.Group("user")
-	{
+	r.POST("/login", controllers.LoginGet)
 
-		userGroup.POST("/login", controllers.LoginPost)
-		userGroup.POST("/register", controllers.Register)
+	// userGroup := r.Group("user")
+	// {
+	// 	userGroup.POST("/login", controllers.LoginPost)
+	// 	userGroup.POST("/register", controllers.Register)
 
-	}
+	// }
 	gitlabGroup := r.Group("/gitlab")
 	{
 		gitlabGroup.GET("/list/projects", controllers.GetProjects)
