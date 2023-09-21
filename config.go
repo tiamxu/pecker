@@ -29,7 +29,10 @@ func (c *Config) InitConfig() (err error) {
 			log.Printf("config initialed, env: %s", cfg.ENV)
 		}
 	}()
-
+	err = sql.Connect(c.DB)
+	if err != nil {
+		return err
+	}
 	if level, err := logrus.ParseLevel(c.LogLevel); err != nil {
 		return err
 	} else {

@@ -12,22 +12,23 @@ func InitRouter(r *gin.Engine) {
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(200, "pong")
 	})
+	userGroup := r.Group("user")
+	{
+		userGroup.GET("/login", controllers.LoginGet)
+		userGroup.POST("/login", controllers.LoginPost)
+		userGroup.POST("/register", controllers.Register)
 
-}
-func InitGitlabRouter(r *gin.RouterGroup) {
+	}
 	gitlabGroup := r.Group("/gitlab")
 	{
 		gitlabGroup.GET("/list/projects", controllers.GetProjects)
 	}
-}
-func User(r *gin.RouterGroup) {
 
-	userGroup := r.Group("user")
-	{
-		userGroup.POST("/register", controllers.Register)
-		userGroup.POST("/login", controllers.Login)
-	}
 }
+
+// func InitGitlabRouter(r *gin.RouterGroup) {
+
+// }
 
 // func InitRouter() *gin.Engine {
 // 	router := gin.Default()

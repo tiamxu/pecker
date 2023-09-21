@@ -4,10 +4,10 @@ http:
   keep_alive: true
 db:
   driver: mysql
-  database: jenkins
+  database: test
   username: root
-  password: Unipal666
-  host: 172.168.1.10
+  password: 123456
+  host: localhost
   port: 3306
   max_idle_conns: 5
   max_open_conns: 10
