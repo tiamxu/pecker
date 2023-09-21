@@ -12,9 +12,10 @@ func InitRouter(r *gin.Engine) {
 	r.GET("/ping", func(c *gin.Context) {
 		c.String(200, "pong")
 	})
+	r.GET("/login", controllers.LoginGet)
 	userGroup := r.Group("user")
 	{
-		userGroup.GET("/login", controllers.LoginGet)
+
 		userGroup.POST("/login", controllers.LoginPost)
 		userGroup.POST("/register", controllers.Register)
 

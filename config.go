@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/koding/multiconfig"
 	"github.com/sirupsen/logrus"
 	"github.com/tiamxu/kit/log"
@@ -31,8 +33,10 @@ func (c *Config) InitConfig() (err error) {
 	}()
 	err = sql.Connect(c.DB)
 	if err != nil {
+		fmt.Println("Init Mysql failed..")
 		return err
 	}
+	fmt.Println("mysql conn succ")
 	if level, err := logrus.ParseLevel(c.LogLevel); err != nil {
 		return err
 	} else {
